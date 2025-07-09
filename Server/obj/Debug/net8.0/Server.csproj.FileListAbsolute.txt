@@ -1,0 +1,14 @@
+E:\Kris Faks\Restoran\Server\bin\Debug\net8.0\Server.exe
+E:\Kris Faks\Restoran\Server\bin\Debug\net8.0\Server.deps.json
+E:\Kris Faks\Restoran\Server\bin\Debug\net8.0\Server.runtimeconfig.json
+E:\Kris Faks\Restoran\Server\bin\Debug\net8.0\Server.dll
+E:\Kris Faks\Restoran\Server\bin\Debug\net8.0\Server.pdb
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.GeneratedMSBuildEditorConfig.editorconfig
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.AssemblyInfoInputs.cache
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.AssemblyInfo.cs
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.csproj.CoreCompileInputs.cache
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.dll
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\refint\Server.dll
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.pdb
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.genruntimeconfig.cache
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\ref\Server.dll
