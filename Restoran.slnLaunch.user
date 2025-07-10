@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Restoran",
+    "Projects": [
+      {
+        "Path": "Server\\Server.csproj",
+        "Action": "Start",
+        "DebugTarget": "Server"
+      },
+      {
+        "Path": "Klijent\\KonobarClient.csproj",
+        "Action": "Start",
+        "DebugTarget": "Klijent"
+      }
+    ]
+  }
+]
