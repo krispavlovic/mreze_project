@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Kris Faks\\Restoran\\Klijent\\Klijent.csproj",
-      "projectName": "Klijent",
-      "projectPath": "E:\\Kris Faks\\Restoran\\Klijent\\Klijent.csproj",
+      "projectUniqueName": "E:\\Kris Faks\\Restoran\\Klijent\\KonobarClient.csproj",
+      "projectName": "KonobarClient",
+      "projectPath": "E:\\Kris Faks\\Restoran\\Klijent\\KonobarClient.csproj",
       "packagesPath": "C:\\Users\\Nighty\\.nuget\\packages\\",
       "outputPath": "E:\\Kris Faks\\Restoran\\Klijent\\obj\\",
       "projectStyle": "PackageReference",

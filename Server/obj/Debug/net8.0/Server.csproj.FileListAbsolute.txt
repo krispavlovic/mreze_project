@@ -12,3 +12,4 @@ E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\refint\Server.dll
 E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.pdb
 E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.genruntimeconfig.cache
 E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\ref\Server.dll
+E:\Kris Faks\Restoran\Server\obj\Debug\net8.0\Server.sourcelink.json
