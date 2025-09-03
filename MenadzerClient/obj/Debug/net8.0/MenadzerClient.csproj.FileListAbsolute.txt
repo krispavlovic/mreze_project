@@ -1,0 +1,15 @@
+E:\Kris Faks\Restoran\MenadzerClient\bin\Debug\net8.0\MenadzerClient.exe
+E:\Kris Faks\Restoran\MenadzerClient\bin\Debug\net8.0\MenadzerClient.deps.json
+E:\Kris Faks\Restoran\MenadzerClient\bin\Debug\net8.0\MenadzerClient.runtimeconfig.json
+E:\Kris Faks\Restoran\MenadzerClient\bin\Debug\net8.0\MenadzerClient.dll
+E:\Kris Faks\Restoran\MenadzerClient\bin\Debug\net8.0\MenadzerClient.pdb
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\MenadzerClient.GeneratedMSBuildEditorConfig.editorconfig
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\MenadzerClient.AssemblyInfoInputs.cache
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\MenadzerClient.AssemblyInfo.cs
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\MenadzerClient.csproj.CoreCompileInputs.cache
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\MenadzerClient.sourcelink.json
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\MenadzerClient.dll
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\refint\MenadzerClient.dll
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\MenadzerClient.pdb
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\MenadzerClient.genruntimeconfig.cache
+E:\Kris Faks\Restoran\MenadzerClient\obj\Debug\net8.0\ref\MenadzerClient.dll

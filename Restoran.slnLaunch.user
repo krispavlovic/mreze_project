@@ -10,7 +10,22 @@
       {
         "Path": "Klijent\\KonobarClient.csproj",
         "Action": "Start",
-        "DebugTarget": "Klijent"
+        "DebugTarget": "KonobarClient"
+      },
+      {
+        "Path": "KuvarClient\\KuvarClient.csproj",
+        "Action": "Start",
+        "DebugTarget": "KuvarClient"
+      },
+      {
+        "Path": "BarmenClient\\BarmenClient.csproj",
+        "Action": "Start",
+        "DebugTarget": "BarmenClient"
+      },
+      {
+        "Path": "MenadzerClient\\MenadzerClient.csproj",
+        "Action": "Start",
+        "DebugTarget": "MenadzerClient"
       }
     ]
   }

@@ -1,0 +1,15 @@
+E:\Kris Faks\Restoran\BarmenClient\bin\Debug\net8.0\BarmenClient.exe
+E:\Kris Faks\Restoran\BarmenClient\bin\Debug\net8.0\BarmenClient.deps.json
+E:\Kris Faks\Restoran\BarmenClient\bin\Debug\net8.0\BarmenClient.runtimeconfig.json
+E:\Kris Faks\Restoran\BarmenClient\bin\Debug\net8.0\BarmenClient.dll
+E:\Kris Faks\Restoran\BarmenClient\bin\Debug\net8.0\BarmenClient.pdb
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\BarmenClient.GeneratedMSBuildEditorConfig.editorconfig
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\BarmenClient.AssemblyInfoInputs.cache
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\BarmenClient.AssemblyInfo.cs
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\BarmenClient.csproj.CoreCompileInputs.cache
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\BarmenClient.sourcelink.json
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\BarmenClient.dll
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\refint\BarmenClient.dll
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\BarmenClient.pdb
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\BarmenClient.genruntimeconfig.cache
+E:\Kris Faks\Restoran\BarmenClient\obj\Debug\net8.0\ref\BarmenClient.dll
