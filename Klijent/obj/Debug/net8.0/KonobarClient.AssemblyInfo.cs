@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KonobarClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a963ebbb1f6c1ad9f978d35d6d22d786c3ae22e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a6116974afd8cf80e3cb88213168499f0ebf80e")]
 [assembly: System.Reflection.AssemblyProductAttribute("KonobarClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KonobarClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
