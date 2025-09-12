@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MenadzerClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a6116974afd8cf80e3cb88213168499f0ebf80e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65252a4b517b1355f1d8dbe1a847ed0f420be59c")]
 [assembly: System.Reflection.AssemblyProductAttribute("MenadzerClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MenadzerClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

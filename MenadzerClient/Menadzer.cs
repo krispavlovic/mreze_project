@@ -17,7 +17,7 @@ namespace KonobarClient
     }
     public class Poruka
     {
-        public string tip { get; set; }         // "dolazak", "porudzbina", "racun"
+        public string tip { get; set; }         // "dolazak", "porudzbina", "racun", itd
         public int sto { get; set; }
         public int? brojGostiju { get; set; }
         public string? poruka { get; set; }
@@ -40,6 +40,7 @@ namespace KonobarClient
         public List<Stavka>? porudzbine { get; set; }
         public string poruka { get; set; }
         public List<Stavka>? notifikacijaGotovePorudzbine { get; set; }
+        public List<Rezervacija>? notifikacijaGotoveRezervacije { get; set; }
         public List<Rezervacija>? rezervacije { get; set; }
     }
 
@@ -56,7 +57,7 @@ namespace KonobarClient
         static void Main(string[] args)
         {
 
-            // UDP socket se kreira jednom (koristi se više puta)
+            // UDP socket kreacija
             Socket udpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             EndPoint udpEndpoint = new IPEndPoint(IPAddress.Loopback, 15000);
 
@@ -109,8 +110,8 @@ namespace KonobarClient
             Console.Write("Unesi vreme rezervacije (dd.MM.yyyy HH:mm): ");
             string unosPocetak = Console.ReadLine();
 
-            var format = "dd.MM.yyyy HH:mm";
-            var kultura = System.Globalization.CultureInfo.InvariantCulture;
+            string format = "dd.MM.yyyy HH:mm";
+            IFormatProvider kultura = System.Globalization.CultureInfo.InvariantCulture;
 
             DateTime vremeRezervacije = DateTime.ParseExact(unosPocetak, format, kultura);
 
@@ -151,8 +152,8 @@ namespace KonobarClient
             Console.Write("Unesi azurirano vreme rezervacije (dd.MM.yyyy HH:mm): ");
             string unosPocetak = Console.ReadLine();
 
-            var format = "dd.MM.yyyy HH:mm";
-            var kultura = System.Globalization.CultureInfo.InvariantCulture;
+            string format = "dd.MM.yyyy HH:mm";
+            IFormatProvider kultura = System.Globalization.CultureInfo.InvariantCulture;
 
             DateTime vremeRezervacije = DateTime.ParseExact(unosPocetak, format, kultura);
 
@@ -221,20 +222,6 @@ namespace KonobarClient
             {
                 Console.WriteLine("Unknown error");
             }
-        }
-
-        static void PosaljiTcpPoruku(object poruka)
-        {
-            Socket tcpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            tcpSocket.Connect(new IPEndPoint(IPAddress.Loopback, 16000));
-
-            // JsonSerializer jer iskace da je BinaryFormatter obsolete i iskacu errori
-            string json = JsonSerializer.Serialize(poruka);
-            byte[] buffer = Encoding.UTF8.GetBytes(json);
-            tcpSocket.Send(buffer);
-
-            tcpSocket.Shutdown(SocketShutdown.Both);
-            tcpSocket.Close();
         }
 
         static Odgovor PosaljiTcpPorukuSaOdgovorom(object poruka)
