@@ -17,7 +17,7 @@ namespace KonobarClient
     }
     public class Poruka
     {
-        public string tip { get; set; }         // "dolazak", "porudzbina", "racun"
+        public string tip { get; set; }         // "dolazak", "porudzbina", "racun", itd
         public int sto { get; set; }
 
         // Samo za "dolazak"
@@ -36,7 +36,7 @@ namespace KonobarClient
     {
         public int broj { get; set; } // broj stola
         public int brojGostiju { get; set; }
-        public bool zauzet { get; set; } = false;
+        public string status { get; set; } = "slobodan";
         public List<Stavka> porudzbine { get; set; } = new List<Stavka>();
     }
 
@@ -44,9 +44,18 @@ namespace KonobarClient
     {
         public string tip { get; set; }
         public List<Sto>? stolovi { get; set; }
-        public List<Stavka>? porudzbine { get; set; }
+        public List<Stavka>? stavke { get; set; }
         public string poruka { get; set; }
         public List<Stavka>? notifikacijaGotovePorudzbine { get; set; }
+        public List<Rezervacija>? notifikacijaGotoveRezervacije { get; set; }
+    }
+
+    public class Rezervacija
+    {
+        public int rezervacijaID { get; set; }
+        public DateTime rezervacijaVreme { get; set; }
+        public int brojStola { get; set; }
+        public int brojGostiju { get; set; }
     }
 
     internal class Konobar
@@ -115,7 +124,7 @@ namespace KonobarClient
             int brojGostiju = int.Parse(Console.ReadLine());
 
 
-            var poruka = new Poruka
+            Poruka poruka = new Poruka
             {
                 tip = "dolazak",
                 sto = sto,
@@ -140,9 +149,8 @@ namespace KonobarClient
             Console.Write("Unesi broj stola: ");
             int sto = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Unosite stavke porudžbine. Prazan unos za završava unos.\n");
+            Console.WriteLine("Unosite stavke porudžbine. Prazan string ili pogresan format završava unos.\n");
 
-            // lista stavki
             List<Stavka> stavke = new List<Stavka>();
 
             while (true)
@@ -152,7 +160,8 @@ namespace KonobarClient
                 if (string.IsNullOrWhiteSpace(naziv)) break;
 
                 Console.Write("Tip stavke (1 - Hrana, 2 - Pice): ");
-                int tip = int.Parse(Console.ReadLine());
+                int.TryParse(Console.ReadLine(), out int tip);
+                if (tip == 0) break;
 
                 if(tip != 1 && tip != 2)
                 {
@@ -161,10 +170,12 @@ namespace KonobarClient
                 }
                 
                 Console.Write("Broj porcija: ");
-                int kolicina = int.Parse(Console.ReadLine());
+                int.TryParse(Console.ReadLine(), out int kolicina);
+                if (kolicina == 0) break;
 
                 Console.Write("Cena po porciji (RSD): ");
-                double cena = double.Parse(Console.ReadLine());
+                double.TryParse(Console.ReadLine(), out double cena);
+                if (cena == 0) break;
 
                 stavke.Add(new Stavka
                 {
@@ -187,7 +198,7 @@ namespace KonobarClient
             };
 
             Console.WriteLine("Pokusaj dodavanja sledecih stavki:");
-            foreach(var stavka in stavke)
+            foreach(Stavka stavka in stavke)
             {
                 Console.WriteLine($"Naziv: {stavka.naziv}, Kolicina: {stavka.kolicina}, Cena(kom): {stavka.cena}");
             }
@@ -274,7 +285,7 @@ namespace KonobarClient
             Odgovor odgovor = PosaljiTcpPorukuSaOdgovorom(poruka);
 
 
-            if(odgovor.porudzbine.Count == 0)
+            if(odgovor.stavke.Count == 0)
             {
                 Console.WriteLine("Trenutno nema aktivnih porudzbina.");
                 return;
@@ -283,17 +294,17 @@ namespace KonobarClient
             if (odgovor.tip == "stanje_porudzbina")
             {
                 Console.WriteLine("\nLista Porudzbina Iz Kuhinje:\n");
-                foreach (Stavka porudzbina in odgovor.porudzbine)
+                foreach (Stavka stavka in odgovor.stavke)
                 {
-                    if(porudzbina.tip != 1)
+                    if(stavka.tip != 1)
                     {
                         continue;
                     }
 
                     string status;
-                    if(porudzbina.status == 1) {
+                    if(stavka.status == 1) {
                         status = "Nije Zapoceta";
-                    }else if (porudzbina.status == 2)
+                    }else if (stavka.status == 2)
                     {
                         status = "Sprema Se";
                     }else
@@ -301,23 +312,23 @@ namespace KonobarClient
                         status = "Gotova Je";
                     }
                     
-                    Console.WriteLine($"Naziv: {porudzbina.naziv}, x{porudzbina.kolicina}, Status: {status}");
+                    Console.WriteLine($"Naziv: {stavka.naziv}, x{stavka.kolicina}, Status: {status}");
                 }
 
                 Console.WriteLine("\nLista Porudzbina Sa Bara:\n");
-                foreach (Stavka porudzbina in odgovor.porudzbine)
+                foreach (Stavka stavka in odgovor.stavke)
                 {
-                    if (porudzbina.tip != 2)
+                    if (stavka.tip != 2)
                     {
                         continue;
                     }
 
                     string status;
-                    if (porudzbina.status == 1)
+                    if (stavka.status == 1)
                     {
                         status = "Nije Zapoceta";
                     }
-                    else if (porudzbina.status == 2)
+                    else if (stavka.status == 2)
                     {
                         status = "Sprema Se";
                     }
@@ -326,7 +337,7 @@ namespace KonobarClient
                         status = "Gotova Je";
                     }
 
-                    Console.WriteLine($"Naziv: {porudzbina.naziv}, x{porudzbina.kolicina}, Status: {status}");
+                    Console.WriteLine($"Naziv: {stavka.naziv}, x{stavka.kolicina}, Status: {status}");
                 }
 
             }
@@ -353,8 +364,7 @@ namespace KonobarClient
                     Console.WriteLine($"Trenutno je zauzeto {odgovor.stolovi.Count} stolova:");
                     foreach (Sto sto in odgovor.stolovi)
                     {
-                        string status = sto.zauzet ? "Zauzet" : "Slobodan";
-                        Console.WriteLine($" - Sto {sto.broj}, broj gostiju: {sto.brojGostiju}, ukupno stavki {sto.porudzbine.Count}: ");
+                        Console.WriteLine($" - Sto {sto.broj}, broj gostiju: {sto.brojGostiju}, ukupno stavki: {sto.porudzbine.Count}, status: {sto.status}");
                         foreach(Stavka stavka in sto.porudzbine)
                         {
                             Console.WriteLine($"Naziv: {stavka.naziv}, Kolicina: {stavka.kolicina}, Cena(kom): {stavka.cena}, Status: {stavka.status}");
@@ -365,20 +375,6 @@ namespace KonobarClient
             }
         }
 
-            static void PosaljiTcpPoruku(object poruka)
-        {
-            Socket tcpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            tcpSocket.Connect(new IPEndPoint(IPAddress.Loopback, 16000));
-
-            // JsonSerializer jer iskace da je BinaryFormatter obsolete i iskacu errori
-            string json = JsonSerializer.Serialize(poruka);
-            byte[] buffer = Encoding.UTF8.GetBytes(json);
-            tcpSocket.Send(buffer);
-
-            tcpSocket.Shutdown(SocketShutdown.Both);
-            tcpSocket.Close();
-        }
-
         static Odgovor PosaljiTcpPorukuSaOdgovorom(object poruka)
         {
             Socket tcpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -386,7 +382,7 @@ namespace KonobarClient
 
             // JsonSerializer jer iskace da je BinaryFormatter obsolete i iskacu errori
             string json = JsonSerializer.Serialize(poruka);
-            byte[] buffer = Encoding.UTF8.GetBytes(json);
+            byte[] buffer = Encoding.UTF8.GetBytes(json );
             tcpSocket.Send(buffer);
 
             byte[] prijemniBuffer = new byte[2048];
@@ -400,11 +396,22 @@ namespace KonobarClient
 
             if(odgovor.notifikacijaGotovePorudzbine != null && odgovor.notifikacijaGotovePorudzbine.Count != 0)
             {
-                Console.WriteLine("\nSledece porudzbine su upravo zavrsene:");
+                Console.WriteLine("\nSledece porudzbine su upravo zavrsene, mozete ih dostaviti:");
                 Console.WriteLine("==============================================\n");
                 foreach(Stavka porudzbina in odgovor.notifikacijaGotovePorudzbine)
                 {
                     Console.WriteLine($"Naziv: {porudzbina.naziv}, x{porudzbina.kolicina}, Cena: {porudzbina.cena}, Status: {porudzbina.status}");
+                }
+                Console.WriteLine("\n==============================================\n");
+            }
+
+            if (odgovor.notifikacijaGotoveRezervacije != null && odgovor.notifikacijaGotoveRezervacije.Count != 0)
+            {
+                Console.WriteLine("\nSledece rezervacije su upravo istekle, njihovi stolovi su oslobodjeni:");
+                Console.WriteLine("==============================================\n");
+                foreach (Rezervacija rez in odgovor.notifikacijaGotoveRezervacije)
+                {
+                    Console.WriteLine($"ID: {rez.rezervacijaID}, Vreme: {rez.rezervacijaVreme}, Broj Stola: {rez.brojStola}, Broj Gostiju: {rez.brojGostiju}");
                 }
                 Console.WriteLine("\n==============================================\n");
             }
